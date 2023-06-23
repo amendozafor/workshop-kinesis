@@ -12,3 +12,5 @@ Para este laboratorio, necesitaremos tener una cuenta de AWS con los permisos le
 * AWS Lambda
 * Amazon S3
 * Cognito user Pools
+* 
+![image](https://github.com/amendozafor/workshop-kinesis/assets/85176161/4320528e-d1ee-4b53-8e44-d50ddd66a0ad)
