@@ -63,6 +63,6 @@ Una vez hayamos comprobado que los recursos desplegados en el stack se crearon c
 
 Una vez nos cargue el sitio, iniciamos sesión con el usuario y la contraseña que creamos en el stack de cloudformation
 
-<img width="1366" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/67bd6dfb-9156-4735-8f24-2402ffa3758c">
+<img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/67bd6dfb-9156-4735-8f24-2402ffa3758c">
 
 ## Crear Kinesis Data Streams
