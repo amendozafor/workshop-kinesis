@@ -7,8 +7,8 @@ Ingestar fácilmente datos de numerosas fuentes y tomar decisiones oportunas se 
 ### Prerequisites
 Para este laboratorio, necesitaremos tener una cuenta de AWS con los permisos le lectura y escritura sobre los siguientes servicios
 
-*AWS Kinesis Data Streams
-*AWS Kinesis Data Firehose
-*AWS Lambda
-*Amazón S3
-*Cognito user Pools
+* AWS Kinesis Data Streams
+* AWS Kinesis Data Firehose
+* AWS Lambda
+* Amazón S3
+* Cognito user Pools
