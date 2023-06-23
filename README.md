@@ -10,5 +10,5 @@ Para este laboratorio, necesitaremos tener una cuenta de AWS con los permisos le
 * AWS Kinesis Data Streams
 * AWS Kinesis Data Firehose
 * AWS Lambda
-* Amazón S3
+* Amazon S3
 * Cognito user Pools
