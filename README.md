@@ -29,21 +29,21 @@ NOTA: La configuración de Kinesis Data Generator (KDG) en una cuenta de AWS cre
 
 3. Se te abrirá un template de cloudformation ya listo para desplegar, o tambien puedes cargarlo de cero en cloudformation utilizando el template cloudformation https://raw.githubusercontent.com/awslabs/amazon-kinesis-data-generator/mainline/setup/cognito-setup.yaml
 
-<img width="1420" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/3548ebd5-4f34-4502-a2d6-f43bd4f7d37e">
+<img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/3548ebd5-4f34-4502-a2d6-f43bd4f7d37e">
 
 Clic en el botón Next
 
 Creas un usuario y una contraseña para cognito
-<img width="1355" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/a072827f-e537-4575-821a-b3e3a2944a4f">
+<img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/a072827f-e537-4575-821a-b3e3a2944a4f">
 
 Clic en el botón Next
 
-<img width="1424" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/3782a014-553d-4385-8969-af5b074368cc">
+<img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/3782a014-553d-4385-8969-af5b074368cc">
 
 En esta sesión dejamos los valores por defecto y clic en el botón Next
 
 Revisamos la Configuración, y Aceptamos los terminos para que amazón cree los recursos
-<img width="1418" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/1ed94a58-1362-40ed-8b0b-bf7c1097405f">
+<img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/1ed94a58-1362-40ed-8b0b-bf7c1097405f">
 
 y por último, clic en el botón Sumbit
 
@@ -51,13 +51,18 @@ Inmediatamente iniciaría el proceso de creación de los recursos necesarios par
 
 
 Una vez se haya completado la creación de los recursos, nos debe mostrar el estado CREATE_COMPLETE
-<img width="1416" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/8e7cb925-34c7-433e-afea-941a830c964e">
+<img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/8e7cb925-34c7-433e-afea-941a830c964e">
 
 
 Podemos comprobar que recusos se crearon, haciendo clic en el stack y llendo a la sección Resources
-<img width="1421" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/adeb5564-3671-47d7-9ea0-f4e652e6bb0e">
+<img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/adeb5564-3671-47d7-9ea0-f4e652e6bb0e">
 
 Una vez hayamos comprobado que los recursos desplegados en el stack se crearon correctamente, vamos a la pestaña "Output" y accedemos a la URL que nos generó
 
-<img width="1376" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/c8574c2d-bdb8-49ff-8f93-25c4a7e2b2b8">
+<img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/c8574c2d-bdb8-49ff-8f93-25c4a7e2b2b8">
 
+Una vez nos cargue el sitio, iniciamos sesión con el usuario y la contraseña que creamos en el stack de cloudformation
+
+<img width="1366" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/67bd6dfb-9156-4735-8f24-2402ffa3758c">
+
+## Crear Kinesis Data Streams
