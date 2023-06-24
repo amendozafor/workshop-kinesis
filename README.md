@@ -13,12 +13,17 @@
     </li>
     <li><a href="#simular-datos-de-entrada-en-tiempo-real">Simular datos de entrada en tiempo real</a>
      <ul>
-        <li><a href="#crear-usuario-amazon-cognito-para-autenticar-desde-kdg">Crear usuario Amazon cognito para autenticar desde KDG</a>    </li>
+        <li><a href="#crear-usuario-amazon-cognito">Crear usuario Amazon cognito</a>          </li>
       </ul>
     </li>
     <li><a href="#crear-kinesis-data-streams">Crear Kinesis Data Streams</a></li>
-    <li><a href="#crear-kinesis-firehose">Crear Kinesis Firehose</a></li>
-    <li><a href="#crear-aplicacion-de-kinesis-data-analytics">Crear Aplicación de Kinesis Data Analytics</a></li>
+    <li><a href="#crear-kinesis-data-firehose">Crear Kinesis Data Firehose</a></li>
+    <li><a href="#crear-kinesis-data-analytics-studio">Crear Kinesis Data Analytics Studio</a></li>
+    <li><a href="#actualizar-rol-iam">Actualizar Rol IAM</a></li>
+    <li><a href="#crear-notebook-kinesis-data-analytics-studio">Crear Notebook Kinesis Data Analytics Studio</a></li>
+    <li><a href="#enviar-datos-de-prueba">Enviar Datos de Prueba</a></li>
+    <li><a href="#analisis-en-tiempo-real">Análisis en Tiempo Real</a></li>
+    <li><a href="#limpiar">Limpiar</a></li>
   </ol>
 </details>
 
@@ -46,7 +51,7 @@ Antes de poder enviar datos a Kinesis, primero debe crear un usuario de Amazon C
 
 `NOTA: La configuración de Kinesis Data Generator (KDG) en una cuenta de AWS creará un conjunto de credenciales de Cognito. Los usuarios que puedan autenticarse con esas credenciales podrán publicar en todos los Kinesis Data Streams y Kinesis Data Firehoses de la cuenta. Después de ejecutar la configuración a continuación, puede cambiar los roles de IAM que se crean para restringir los permisos para publicar en flujos especificos.`
 
-###Crear usuario Amazón cognito para autenticar desde KDG
+### Crear usuario Amazon cognito
 1. Inicie Sesión en la consola de AWS
 2. Ingresa al siguiente enlace: [Cloudformation deploy](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=Kinesis-Data-Generator-Cognito-User&templateURL=https://aws-kdg-tools.s3.us-west-2.amazonaws.com/cognito-setup.yaml) Donde se te abrirá un template de cloudformation ya listo para desplegar en tu cuenta de AWS
 
@@ -139,10 +144,152 @@ Crearemos una secuencia de entrega de datos de Kinesis Data Firehose, para recib
 6. Volvemos a la pantalla donde estamos creando nuestro Kinesis Data Firehose y  en el campo `S3 bucket` ingresamos el nombre el bucket que acabamos de crear
 7. dejamos los demas campos con la configuración por defecto y hacemos clic en el botón `Create Delivery Stream`
 
-Una vez se cree nuestro delivery steam, se verá de la siguiente manera y está listo para recibir los datos y enviarlos a S3
+Una vez se cree nuestro delivery steam, se verá de la siguiente manera y estará listo para recibir los datos y almacenarlos en S3
 
 <img width="1378" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/cec220c3-2351-4256-8b34-51c4e3efaa63">
 
 <br /><br /><br />
 
-## Crear Aplicación de Kinesis Data Analytics
+## Crear Kinesis Data Analytics Studio
+
+1. Estando en el servicio de Kinesis en la consola de AWS, ingresamos a `Streaming Applications`, nos vamos a la sección `Studio` y hacemos clic en en botón `Create Studio Notebook`
+
+<img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/8a78b035-f8e3-41c6-bff5-6cf9a7031221">
+<br /><br />
+
+2. Ingresas la siguiente configuración:
+   * Creation method: `Quick create with sample code`
+   * Studio notebook name: `kda-workshop-ug`
+   * AWS Glue database: `Default`
+   * Clic botón `Create Studio Notebook`
+
+Se iniciará el proceso de creación de nuestra aplicación de Kinesis Data Analytics, y en unos segundos estará lista para usar
+<br /><br /><br />
+## Actualizar Rol IAM
+
+En el paso anterior, por defecto se crea un rol, el cual debemos modificarlo para darle acceso al nuestro notebook a los servicios de S3, Kinesis y Glue
+
+1. Hacemos clic en el nombre del rol y nos llevará directamente a IAM
+
+<img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/dfd27b54-f25b-4d20-b414-6f4069588b1a">
+<br /><br />
+  
+2. Seleccionamos nuestro rol y hacemos clic en el boton `Attach Policies`
+
+<img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/8b8c9d92-8488-43ac-8f13-17c62bce8f08">
+ <br /><br />
+  
+3. Buscamos y agregamos  `AmazonS3FullAccess`, `AmazonKinesisFullAccess` y `AWSGlueServiceRole`
+
+<img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/c41e9f65-c1b9-40d3-8adc-837fba3d9122">
+<br /><br />
+La configuración de nuestra aplicación ya está completa, cuando esté lista pasamos a a siguiente sesión.
+<br /><br />
+
+## Crear Notebook Kinesis Data Analytics Studio
+
+Ahora que nuestra aplicación ya está lista, lo que debemos hacer es iniciarla, y empezar a explorar nuestros datos.
+
+1. hacemos clic en el botón Run y esperamos unos minutos a que se inicie nuestra aplicación
+
+<img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/c0321bf8-8523-499f-9c0b-2e35c208472b">
+<br /><br />
+
+2. Cuando la apliación esté en estado `Running`, clic en `Open in Apache Zeppelin`
+
+3. Creamos nuestro primer Notebook:
+    Estando en la interfaz de Zeppelin, hacemos clic en la opción `Create new note` y ya tendremos nuestra interfaz lista para empezar a analizar datos de manera interactiva
+<img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/88a74593-8bb9-4294-82e9-610648472689">
+
+<br /><br /><br />
+## Enviar Datos de Prueba
+
+Ya está todo listo. Ahora solo nos falta, empezar a recibir datos para iniciar nuestro análisis en tiempo real, asi que volvemos al Kinesis Data Generator y llenamos la siguiente configuración:
+
+* Region: `us-east-1`
+* Stream/delivery stream: `kds-workshop-ug`
+* Records per second: `1`
+* Record template: Pegamos el siguiente script, el cual nos generará data de manera dinamica:
+```sh
+ {
+    "fecha_compra": "{{date.now("YYYY-MM-DD HH:mm:ss")}}",
+    "nombre_cliente": "{{name.firstName}} {{name.lastName}}",
+    "numero_documento":{{random.number(1000000000)}},
+    "cantidad_items": {{random.number(
+        {
+            "min":1,
+            "max":150
+        }
+    )}},
+    "estado_transaccion": "{{random.arrayElement(
+        ["OK","SIN FONDOS","ERROR PLATAFORMA"]
+    )}}",
+    "valor_total":{{random.number(
+        {
+            "min":1000,
+            "max":10000000
+        }
+    )}}
+}
+```
+
+<img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/53dd83f9-3cc9-4c45-b82c-accbfde51f4b">
+<br /><br />
+Hacemos Clic en el botón `Send Data` y se empezarán a ingestar los datos en nuestro Kinesis Data Streams
+<img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/a07016d6-b8c4-4ca9-9b74-6bf4647dfccc">
+
+
+<br /><br /><br />
+## Análisis en Tiempo Real
+
+Volvemos a nuestro Notebook de Zeppelin, y lo primero que haremos es crear una tabla con nuestra estructura de datos, asi que pegamos el siguiente fragmeto y lo ejecutamos en el notebook:
+
+```sh
+%flink.ssql
+
+CREATE TABLE ventasug (
+  `fecha_compra` TIMESTAMP(3),
+  `nombre_cliente` STRING,
+  `numero_documento` STRING,
+  `cantidad_items` INT,
+  `estado_transaccion` STRING,
+  `valor_total` INT
+)
+PARTITIONED BY (estado_transaccion)
+WITH (
+  'connector' = 'kinesis',
+  'stream' = 'kds-workshop-ug',
+  'aws.region' = 'us-east-1',
+  'scan.stream.initpos' = 'LATEST',
+  'format' = 'json'
+);
+```
+
+Nos debe salir el siguiente mensaje:
+<img width="857" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/53d22e10-d31e-44a7-b199-c433fd842a26">
+
+con esto se ha creado una tabla llamada `ventasug` que estará disponible en nuestro catálogo de GLUE en la base de datos `Default`.
+
+Ya podremos empezar a realizar consultas sobre nuestros datos, ya sea SQL o utilizando Python y Escala.
+
+Ahora, ejecutamos el siguiete Query y podemos ver como va llegando la data en tiempo real y podremos empezar a realizar análisis mas profundos
+```sh
+%flink.ssql(type=update)
+
+select *
+from ventasug;
+```
+<img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/d558a058-126e-4cae-b17b-a117f1d7d73a">
+
+<br /><br /><br />
+## Limpiar
+
+1. Parar el Kinesis Data Generator:
+<img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/78058675-aa39-4f57-861c-231378bcf9e1">
+
+
+2. Eliminar Kinesis Data Streams
+3. Eliminar/Detener Aplicación de Kinesis Data Analytics
+4. Eliminar Kinesis Data Firehose
+5. Eliminar Bucket S3
+6. Eliminar catálogo de GLUE
