@@ -89,12 +89,15 @@ Una vez hayamos comprobado que los recursos desplegados en el stack se crearon c
 Cuando nos cargue por completo la página del Kinesis Data Generator, Iniciamos sesión con el `username` y la `password` que creamos en uno de los pasos anteriores y nos debe mostrar la siguiente pantalla:
 
 <img width="800" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/1daf8a57-1a5a-4e47-9c80-e975ad2c60a5">
-<br /><br /><br /><br />
+<br /><br /><br />
 
 ## Crear Kinesis Data Streams
 
+Nuestro Kinesis Data stream reibirá los datos que enviemos desde el Kinesis Data Generator en tiempo real para posteriormente enviarlos a un destino en S3 utilizando Kinesis Data Firehose y Realizando análisis en tiempo real con Kinesis Data Analytics
+
 1. En el búscador de la consola de AWS escribimos `Kinesis` y seleccionamos `Kinesis Data Stream`
 <img width="1175" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/556d8008-4f5e-4ff4-ac51-1d04cb85939f">
+<br /><br />
 
 2. Hacemos clic en `Create Data Streams`
 3. Ingresamos la siguiente configuración:
@@ -106,6 +109,40 @@ Cuando nos cargue por completo la página del Kinesis Data Generator, Iniciamos 
 
 Nuestro Kinesis se empezará a crear y una vez finalicé se debe ver de la siguiente manera:
 <img width="1130" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/62198216-e2c9-495d-8c7e-38f72ae59bbd">
-<br /><br />
 
+<br /><br /><br />
 
+## Crear Kinesis Data Firehose
+
+Crearemos una secuencia de entrega de datos de Kinesis Data Firehose, para recibir los datos que se ingestan en Kinesis Data Streams y llevarlos a un bucket de S3 de manera particionada
+
+1. Estando en el servicio de Kinesis en la consola de AWS, hacemos clic en la opción `Delivery Stream` y hacemos clic en el botón `Create Delivery Stream`
+   
+   <img width="1363" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/439f3e3d-2301-49f9-8ce0-c968031db596">
+   <br /><br />
+   
+2. Ingresamos la siguiente configuración
+      * Source: `Amazon Kinesis Data Stream`
+      * Destination: `Amazon S3`
+
+3. En la sección `Source settings`, hacemos clic  en el botón `Browse` y seleccionamos nuestro Kinesis Data Stream creado anteriormente
+       <img width="1328" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/fea6b502-27a5-4740-8ef6-65b0b060bc90">
+
+4. Diligenciamos el campo Delivery stream name: `kdf-workshop-ug`
+
+5. En la sección `Destination settings` crearemos un nuevo bucket de S3, a donde nos llegaran nuestros datos particionados
+
+   Hacemos clic en la opción `Create` y llenamos la siguiente configuración:
+   *  Bucket name: `workshop-ug-med-bucket`
+   *  dejamos la demas configuración por defecto
+   *  Hacemos clic en el Botón `Crear Bucket`
+6. Volvemos a la pantalla donde estamos creando nuestro Kinesis Data Firehose y  en el campo `S3 bucket` ingresamos el nombre el bucket que acabamos de crear
+7. dejamos los demas campos con la configuración por defecto y hacemos clic en el botón `Create Delivery Stream`
+
+Una vez se cree nuestro delivery steam, se verá de la siguiente manera y está listo para recibir los datos y enviarlos a S3
+
+<img width="1378" alt="image" src="https://github.com/amendozafor/workshop-kinesis/assets/85176161/cec220c3-2351-4256-8b34-51c4e3efaa63">
+
+<br /><br /><br />
+
+## Crear Aplicación de Kinesis Data Analytics
