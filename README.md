@@ -6,7 +6,7 @@ Workshop de Kinesis
   <summary>Tabla de contenido</summary>
   <ol>
     <li>
-      <a href="#getting-started">Antes de empezar</a>
+      <a href="#antes-de-empezar">Antes de empezar</a>
       <ul>
         <li><a href="#prerequisites">Prerequisitos</a></li>
       </ul>
