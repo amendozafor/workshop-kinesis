@@ -1,6 +1,30 @@
 # workshop-kinesis
 Workshop de Kinesis 
 
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Tabla de contenido</summary>
+  <ol>
+    <li>
+      <a href="#getting-started">Antes de empezar</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisitos</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Simular datos de entrada en tiempo real</a>
+     <ul>
+        <li><a href="#prerequisites">Crear usuario Amazón cognito para autenticar desde KDG</a></li>
+      </ul>
+    </li>
+    <li><a href="#roadmap">Crear Kinesis Data Streams</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+
+
 ## Antes de empezar
 Ingestar fácilmente datos de numerosas fuentes y tomar decisiones oportunas se está convirtiendo en una capacidad crítica y central para muchas empresas. En este laboratorio, brindamos experiencia práctica en el uso de Kinesis Data Stream para capurar datos en tiempo real, Kinesis Data Firehose para  cargar flujos de datos en Amazon S3 y realizar análisis en tiempo real en el flujo con Kinesis Data Analytics.
 
@@ -9,6 +33,8 @@ Para este laboratorio, necesitaremos tener una cuenta de AWS con los permisos le
 
 * AWS Kinesis Data Streams
 * AWS Kinesis Data Firehose
+* AWS Kinesis Data Analytics
+* AWS Glue Catalog
 * AWS Lambda
 * Amazon S3
 * Cognito user Pools
@@ -24,6 +50,7 @@ Antes de poder enviar datos a Kinesis, primero debe crear un usuario de Amazon C
 
 NOTA: La configuración de Kinesis Data Generator (KDG) en una cuenta de AWS creará un conjunto de credenciales de Cognito. Los usuarios que puedan autenticarse con esas credenciales podrán publicar en todos los Kinesis Data Streams y Kinesis Data Firehoses de la cuenta. Después de ejecutar la configuración a continuación, puede cambiar los roles de IAM que se crean para restringir los permisos para publicar en flujos o mangueras de incendios específicos.
 
+###Crear usuario Amazón cognito para autenticar desde KDG
 1. Inicie Sesión en la consola de AWS
 2. Ingresa al siguiente enlace: https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=Kinesis-Data-Generator-Cognito-User&templateURL=https://aws-kdg-tools.s3.us-west-2.amazonaws.com/cognito-setup.yaml
 
