@@ -8,19 +8,17 @@ Workshop de Kinesis
     <li>
       <a href="#antes-de-empezar">Antes de empezar</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisitos</a></li>
+        <li><a href="#prerequisitos">Prerequisitos</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Simular datos de entrada en tiempo real</a>
+    <li><a href="#simular-datos-de-entrada-en-tiempo-real">Simular datos de entrada en tiempo real</a>
      <ul>
-        <li><a href="#prerequisites">Crear usuario Amazón cognito para autenticar desde KDG</a></li>
+        <li><a href="#crear-usuario-amazon-cognito-para-autenticar-desde-kdg">Crear usuario Amazon cognito para autenticar desde KDG</a></li>
       </ul>
     </li>
-    <li><a href="#roadmap">Crear Kinesis Data Streams</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#crear-kinesis-data-streams">Crear Kinesis Data Streams</a></li>
+    <li><a href="#crear-kinesis-firehose">Crear Kinesis Firehose</a></li>
+    <li><a href="#crear-aplicacion-de-kinesis-data-analytics">Crear Aplicación de Kinesis Data Analytics</a></li>
   </ol>
 </details>
 
