@@ -1,5 +1,5 @@
 # workshop-kinesis
-Workshop de Kinesis 
+
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -46,7 +46,7 @@ En este paso utilizaremos Amazon Kinesis Data Generator (KDG) que nos facilitar�
 
 Antes de poder enviar datos a Kinesis, primero debe crear un usuario de Amazon Cognito en su cuenta de AWS con permisos para acceder a Amazon Kinesis. Para simplificar este proceso, se proporcionan una función de Amazon Lambda y una plantilla de Amazon CloudFormation para crear el usuario y asignar los permisos necesarios para usar el KDG.
 
-NOTA: La configuración de Kinesis Data Generator (KDG) en una cuenta de AWS creará un conjunto de credenciales de Cognito. Los usuarios que puedan autenticarse con esas credenciales podrán publicar en todos los Kinesis Data Streams y Kinesis Data Firehoses de la cuenta. Después de ejecutar la configuración a continuación, puede cambiar los roles de IAM que se crean para restringir los permisos para publicar en flujos o mangueras de incendios específicos.
+`NOTA: La configuración de Kinesis Data Generator (KDG) en una cuenta de AWS creará un conjunto de credenciales de Cognito. Los usuarios que puedan autenticarse con esas credenciales podrán publicar en todos los Kinesis Data Streams y Kinesis Data Firehoses de la cuenta. Después de ejecutar la configuración a continuación, puede cambiar los roles de IAM que se crean para restringir los permisos para publicar en flujos o mangueras de incendios específicos.`
 
 ###Crear usuario Amazón cognito para autenticar desde KDG
 1. Inicie Sesión en la consola de AWS
